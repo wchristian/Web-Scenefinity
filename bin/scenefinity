@@ -1,0 +1,3 @@
+use strictures;
+use Web::Scenefinity;
+Web::Scenefinity->run_if_script;
