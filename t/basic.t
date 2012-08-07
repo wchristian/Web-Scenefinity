@@ -12,6 +12,6 @@ done_testing;
 exit;
 
 sub run {
-
+    ok( 1, "loads" );
     return;
 }
