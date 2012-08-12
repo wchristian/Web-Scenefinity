@@ -18,10 +18,11 @@ use HTTP::Tiny;
 use Data::Dumper;
 use YAML 'Load';
 use List::Util qw( shuffle );
+use Web::Scenefinity::Schema;
 use File::Slurp 'read_file';
 
 sub {
-    has $_ => ( is => 'lazy' ) for qw( config );
+    has $_ => ( is => 'lazy' ) for qw( db config );
   }
   ->();
 
@@ -35,6 +36,12 @@ sub config_path {
 
 sub _build_config { Load read_file( shift->config_path ) }
 
+sub _build_db {
+    my ( $self ) = @_;
+    my $db       = $self->config->{db};
+    my $schema   = Web::Scenefinity::Schema->connect( $db );
+    return $schema;
+}
 
 sub dispatch_request {
     (

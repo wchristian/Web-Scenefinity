@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use strictures;
+
+package scenefinity_deploy;
+
+use Web::Scenefinity::Schema::Script;
+Web::Scenefinity::Schema::Script->new_with_options->run;
