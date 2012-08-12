@@ -11,16 +11,13 @@ package Web::Scenefinity;
 use Web::Simple;
 
 use Web::SimpleX::Helper::ActionWithRender qw' mm action ';
-use File::ShareDir 'dist_dir';
+use File::ShareDir::ProjectDistDir 'dist_dir';
 use Text::Xslate;
 use JSON qw' from_json to_json ';
 use HTTP::Tiny;
 use Data::Dumper;
 use List::Util qw( shuffle );
 
-sub share_dir {
-    eval { dist_dir( "Web-Scenefinity" ) } || "../share/";
-}
 
 sub dispatch_request {
     (
@@ -69,7 +66,7 @@ sub youtube_js { ["youtube.js"] }
 
 sub render_Xslate {
     my ( $self, $result ) = @_;
-    my $content = Text::Xslate->new( path => $self->share_dir )->render( @{$result} );
+    my $content = Text::Xslate->new( path => dist_dir( "Web-Scenefinity" ) )->render( @{$result} );
     [ 200, [ "Content-Type" => "text/html; charset=utf-8" ], [$content], ];
 }
 
