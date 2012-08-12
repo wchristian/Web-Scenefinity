@@ -1,0 +1,4 @@
+development:
+    dsn: "dbi:mysql:host=localhost;database=scenefinity"
+    user: "scenefinity"
+    password: "scenefinity"

@@ -13,9 +13,7 @@ use Web::Simple;
 use Web::SimpleX::Helper::ActionWithRender qw' mm action ';
 use File::ShareDir::ProjectDistDir 'dist_dir';
 use Text::Xslate;
-use JSON qw' from_json to_json ';
-use HTTP::Tiny;
-use Data::Dumper;
+use JSON 'to_json';
 use YAML 'Load';
 use List::Util qw( shuffle );
 use Web::Scenefinity::Schema;
@@ -53,35 +51,10 @@ sub dispatch_request {
 
 sub default_view { "Xslate" }
 
-sub jget {
-    my ( $url ) = @_;
-    my $res = HTTP::Tiny->new->get( $url );
-    die Dumper( $res ) unless $res->{success};
-    return from_json( $res->{content} );
-}
-
-sub author_all_videos {
-    my ( $author ) = @_;
-    my $base =
-      "http://gdata.youtube.com/feeds/api/videos?author=%s&v=2&format=5&start-index=%d&max-results=%d&alt=json";
-    my @videos;
-    my $i = 1;
-    while ( 1 ) {
-        my $all = jget sprintf $base, $author, $i, 50;
-        last if !$all->{feed}{entry};
-        push @videos, @{ $all->{feed}{entry} };
-        $i += 50;
-    }
-    return @videos;
-}
-
 sub more_demos {
-    my @videos = author_all_videos( "Annikras" );
-    @videos = shuffle @videos;
-    @videos = grep $_, @videos[ 0 .. 9 ];
-    my @ids = map $_->{id}{'$t'}, @videos;
-    $_ =~ s/.*video:(.*)/$1/ for @ids;
-
+    my ( $self ) = @_;
+    my @videos = $self->db->resultset( 'Video' )->rand( 10 );
+    my @ids = map $_->yt_id, @videos;
     return \@ids;
 }
 
