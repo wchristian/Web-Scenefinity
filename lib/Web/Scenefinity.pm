@@ -16,7 +16,24 @@ use Text::Xslate;
 use JSON qw' from_json to_json ';
 use HTTP::Tiny;
 use Data::Dumper;
+use YAML 'Load';
 use List::Util qw( shuffle );
+use File::Slurp 'read_file';
+
+sub {
+    has $_ => ( is => 'lazy' ) for qw( config );
+  }
+  ->();
+
+sub config_path {
+    my $file = ".scenefinity";
+    return $file if -f $file;
+    my $home_dir = File::HomeDir->my_home || '';
+    return "$home_dir$file" if -f "$home_dir$file";
+    die "no config file found in . or ~";
+}
+
+sub _build_config { Load read_file( shift->config_path ) }
 
 
 sub dispatch_request {
