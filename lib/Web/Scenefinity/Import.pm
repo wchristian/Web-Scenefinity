@@ -7,6 +7,7 @@ use Data::Dumper;
 use JSON 'from_json';
 use IO::All;
 use IO::All::HTTP;
+use XML::Twig;
 
 use Moo;
 
@@ -15,7 +16,7 @@ with "Web::Scenefinity::Role::Configuration";
 sub run {
     my ( $self ) = @_;
 
-    my @ids = map $self->$_, qw( youtube_ids );
+    my @ids = map $self->$_, qw( pouet_ids youtube_ids );
 
     my $db     = $self->db;
     my $videos = $db->resultset( "Video" );
@@ -49,6 +50,16 @@ sub yt_ids_for_account {
     my @ids = map $_->{id}{'$t'}, @videos;
     $_ =~ s/.*\/([\w\-]+)$/$1/ for @ids;
     return @ids;
+}
+
+sub pouet_ids {
+    map $_[0]->clean_pouet( $_ ),
+      XML::Twig->parse( io( "http://pouet.net/export/youtube.php" )->all )->get_xpath( "/feed/prod/youtube" );
+}
+
+sub clean_pouet {
+    $_[1]->text =~ /.*\?v=([\w\-]+)$/;
+    return $1;
 }
 
 1;

@@ -50,6 +50,7 @@
             "File::ShareDir::ProjectDistDir" : "0",
             "HTTP::Tiny" : "0",
             "IO::All" : "0",
+            "IO::All::HTTP" : "0",
             "JSON" : "0",
             "List::Util" : "0",
             "Moo" : "0",
