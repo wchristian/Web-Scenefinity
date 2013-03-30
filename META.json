@@ -4,7 +4,7 @@
       "Christian Walde <walde.christian@googlemail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300020, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300029, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "unrestricted"
    ],
@@ -31,18 +31,40 @@
             "File::ShareDir::Install" : "0.03"
          }
       },
+      "develop" : {
+         "requires" : {
+            "Pod::Coverage::TrustPod" : "0",
+            "Test::CPAN::Meta" : "0",
+            "Test::Pod" : "1.41",
+            "Test::Pod::Coverage" : "1.08"
+         }
+      },
       "runtime" : {
          "requires" : {
+            "DBIx::Class::Core" : "0",
+            "DBIx::Class::DeploymentHandler" : "0",
+            "DBIx::Class::Helper::ResultSet::Random" : "0",
+            "DBIx::Class::ResultSet" : "0",
+            "DBIx::Class::Schema::Config" : "0",
             "Data::Dumper" : "0",
-            "File::ShareDir" : "0",
+            "File::ShareDir::ProjectDistDir" : "0",
             "HTTP::Tiny" : "0",
+            "IO::All" : "0",
             "JSON" : "0",
             "List::Util" : "0",
+            "Moo" : "0",
+            "Moo::Role" : "0",
+            "Moose" : "0",
+            "MooseX::AttributeShortcuts" : "0",
+            "MooseX::Getopt" : "0",
             "Scalar::Util" : "0",
             "Sub::Exporter::Simple" : "0",
             "Text::Xslate" : "0",
             "Try::Tiny" : "0",
             "Web::Simple" : "0",
+            "XML::Twig" : "0",
+            "YAML" : "0",
+            "base" : "0",
             "perl" : "5.006",
             "strictures" : "0"
          }
@@ -53,6 +75,7 @@
             "File::Temp" : "0",
             "Test::InDistDir" : "0",
             "Test::More" : "0",
+            "parent" : "0",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -61,6 +84,30 @@
    "provides" : {
       "Web::Scenefinity" : {
          "file" : "lib/Web/Scenefinity.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Import" : {
+         "file" : "lib/Web/Scenefinity/Import.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Role::Configuration" : {
+         "file" : "lib/Web/Scenefinity/Role/Configuration.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Schema" : {
+         "file" : "lib/Web/Scenefinity/Schema.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Schema::Result::Video" : {
+         "file" : "lib/Web/Scenefinity/Schema/Result/Video.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Schema::ResultSet::Video" : {
+         "file" : "lib/Web/Scenefinity/Schema/ResultSet/Video.pm",
+         "version" : "0.000001"
+      },
+      "Web::Scenefinity::Schema::Script" : {
+         "file" : "lib/Web/Scenefinity/Schema/Script.pm",
          "version" : "0.000001"
       },
       "Web::SimpleX::Helper::ActionWithRender" : {
