@@ -5,6 +5,8 @@ package Web::Scenefinity::Import;
 use HTTP::Tiny;
 use Data::Dumper;
 use JSON 'from_json';
+use IO::All;
+use IO::All::HTTP;
 
 use Moo;
 
@@ -28,12 +30,7 @@ sub run {
 
 sub yt_accounts { qw( Annikras demosceneM0d TMCrole ReclusiveLemming ) }
 
-sub jget {
-    my ( $url ) = @_;
-    my $res = HTTP::Tiny->new->get( $url );
-    die Dumper( $res ) unless $res->{success};
-    return from_json( $res->{content} );
-}
+sub jget { from_json io( $_[0] )->all }
 
 sub yt_ids_for_account {
     my ( $self, $account ) = @_;
