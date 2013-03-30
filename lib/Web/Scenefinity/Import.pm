@@ -12,6 +12,7 @@ with "Web::Scenefinity::Role::Configuration";
 
 sub run {
     my ( $self ) = @_;
+
     my @ids = map $self->yt_ids_for_account( $_ ), $self->yt_accounts;
 
     my $db     = $self->db;
@@ -25,7 +26,7 @@ sub run {
     return;
 }
 
-sub yt_accounts { qw( Annikras ) }    # demosceneM0d TMCrole ReclusiveLemming
+sub yt_accounts { qw( Annikras demosceneM0d TMCrole ReclusiveLemming ) }
 
 sub jget {
     my ( $url ) = @_;
@@ -44,9 +45,7 @@ sub yt_ids_for_account {
         my $entries = $all->{feed}{entry};
         last if !$entries or !@{$entries};
         push @videos, @{$entries};
-        last;
-
-        # $i += 50;
+        $i += 50;
     }
     my @ids = map $_->{id}{'$t'}, @videos;
     $_ =~ s/.*\/([\w\-]+)$/$1/ for @ids;
