@@ -15,7 +15,7 @@ with "Web::Scenefinity::Role::Configuration";
 sub run {
     my ( $self ) = @_;
 
-    my @ids = map $self->yt_ids_for_account( $_ ), $self->yt_accounts;
+    my @ids = map $self->$_, qw( youtube_ids );
 
     my $db     = $self->db;
     my $videos = $db->resultset( "Video" );
@@ -27,6 +27,8 @@ sub run {
 
     return;
 }
+
+sub youtube_ids { map $_[0]->yt_ids_for_account( $_ ), $_[0]->yt_accounts }
 
 sub yt_accounts { qw( Annikras demosceneM0d TMCrole ReclusiveLemming ) }
 
