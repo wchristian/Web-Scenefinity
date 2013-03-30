@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use strictures;
+
+package scenefinity_import;
+
+use Web::Scenefinity::Import;
+Web::Scenefinity::Import->new->run;
