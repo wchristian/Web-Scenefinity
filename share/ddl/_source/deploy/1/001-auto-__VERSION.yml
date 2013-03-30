@@ -81,89 +81,6 @@ translator:
   filename: ~
   no_comments: 0
   parser_args:
-    package: &1 !!perl/hash:Web::Scenefinity::Schema
-      class_mappings:
-        DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
-        Web::Scenefinity::Schema::Result::Video: Video
-      source_registrations:
-        Video: !!perl/hash:DBIx::Class::ResultSource::Table
-          _columns:
-            video_id:
-              data_type: integer
-              is_auto_increment: 1
-            yt_id:
-              data_type: text
-          _columns_info_loaded: 0
-          _ordered_columns:
-            - video_id
-            - yt_id
-          _primaries: &2
-            - video_id
-          _relationships: {}
-          _unique_constraints:
-            primary: *2
-            video_yt_id:
-              - yt_id
-          name: video
-          result_class: Web::Scenefinity::Schema::Result::Video
-          resultset_attributes: {}
-          resultset_class: Web::Scenefinity::Schema::ResultSet::Video
-          schema: *1
-          source_name: Video
-        __VERSION: !!perl/hash:DBIx::Class::ResultSource::Table
-          _columns:
-            ddl:
-              data_type: text
-              is_nullable: 1
-            id:
-              data_type: int
-              is_auto_increment: 1
-            upgrade_sql:
-              data_type: text
-              is_nullable: 1
-            version:
-              data_type: varchar
-              size: 50
-          _columns_info_loaded: 0
-          _ordered_columns:
-            - id
-            - version
-            - ddl
-            - upgrade_sql
-          _primaries: &3
-            - id
-          _relationships: {}
-          _unique_constraints:
-            dbix_class_deploymenthandler_versions_version:
-              - version
-            primary: *3
-          name: dbix_class_deploymenthandler_versions
-          result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
-          resultset_attributes: {}
-          resultset_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResultSet
-          schema: *1
-          source_name: __VERSION
-      storage: !!perl/hash:DBIx::Class::Storage::DBI
-        _connect_info:
-          - ~
-        _dbh_details: {}
-        _dbh_gen: 0
-        _dbi_connect_info:
-          - ~
-          - ~
-          - ~
-          - &4
-            AutoCommit: 1
-            PrintError: 0
-            RaiseError: 1
-            ShowErrorStatement: 1
-        _dbic_connect_attributes: *4
-        _in_do_block: 0
-        _sql_maker: ~
-        _sql_maker_opts: {}
-        savepoints: []
-        schema: *1
-        transaction_depth: 0
     sources:
       - __VERSION
   parser_type: SQL::Translator::Parser::DBIx::Class
@@ -171,4 +88,4 @@ translator:
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11011
+  version: 0.11016

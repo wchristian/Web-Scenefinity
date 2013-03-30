@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sun Aug 12 18:40:00 2012
+-- Created on Fri Mar 29 19:49:51 2013
 -- 
 ;
 SET foreign_key_checks=0;
@@ -10,9 +10,9 @@ SET foreign_key_checks=0;
 CREATE TABLE `dbix_class_deploymenthandler_versions` (
   `id` integer NOT NULL auto_increment,
   `version` varchar(50) NOT NULL,
-  `ddl` text,
-  `upgrade_sql` text,
+  `ddl` text NULL,
+  `upgrade_sql` text NULL,
   PRIMARY KEY (`id`),
   UNIQUE `dbix_class_deploymenthandler_versions_version` (`version`)
 );
-SET foreign_key_checks=1
+SET foreign_key_checks=1;

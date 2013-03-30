@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sun Aug 12 18:40:00 2012
+-- Created on Fri Mar 29 19:49:51 2013
 -- 
 ;
 SET foreign_key_checks=0;
@@ -13,4 +13,4 @@ CREATE TABLE `video` (
   PRIMARY KEY (`video_id`),
   UNIQUE `video_yt_id` (`yt_id`)
 );
-SET foreign_key_checks=1
+SET foreign_key_checks=1;

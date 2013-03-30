@@ -1,10 +1,10 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sun Aug 12 18:39:59 2012
+-- Created on Fri Mar 29 19:49:50 2013
 -- 
 ;
 --
--- Table: video
+-- Table: video.
 --
 CREATE TABLE "video" (
   "video_id" serial NOT NULL,
@@ -13,3 +13,4 @@ CREATE TABLE "video" (
   CONSTRAINT "video_yt_id" UNIQUE ("yt_id")
 );
 
+;
