@@ -16,7 +16,7 @@ with "Web::Scenefinity::Role::Configuration";
 sub run {
     my ( $self ) = @_;
 
-    my @ids = map $self->$_, qw( pouet_ids youtube_ids );
+    my @ids = grep $_, map $self->$_, qw( pouet_ids youtube_ids );
 
     my $db     = $self->db;
     my $videos = $db->resultset( "Video" );
