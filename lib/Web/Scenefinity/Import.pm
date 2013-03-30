@@ -54,7 +54,8 @@ sub yt_ids_for_account {
 
 sub pouet_ids {
     map $_[0]->clean_pouet( $_ ),
-      XML::Twig->parse( io( "http://pouet.net/export/youtube.php" )->all )->get_xpath( "/feed/prod/youtube" );
+      map XML::Twig->parse( $_ )->get_xpath( "/feed/prod/youtube" ),
+      io( "http://pouet.net/export/youtube.php" )->all;
 }
 
 sub clean_pouet {
