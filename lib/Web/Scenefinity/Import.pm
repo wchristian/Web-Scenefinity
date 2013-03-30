@@ -37,7 +37,7 @@ sub jget { from_json io( $_[0] )->all }
 
 sub yt_ids_for_account {
     my ( $self, $account ) = @_;
-    my $base = "http://gdata.youtube.com/feeds/api/users/%s/uploads?start-index=1&max-results=50&alt=json";
+    my $base = "http://gdata.youtube.com/feeds/api/users/%s/uploads?start-index=%s&max-results=%s&alt=json";
     my @videos;
     my $i = 1;
     while ( 1 ) {
