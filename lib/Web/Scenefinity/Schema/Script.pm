@@ -64,7 +64,7 @@ sub cmd_upgrade { shift->_dh->upgrade }
 sub run {
     my ( $self ) = @_;
     my ( $cmd, @what ) = @{ $self->extra_argv };
-    die "Must supply a command\n" unless $cmd;
+    die "Must supply a command (install|upgrade|write_ddl)\n" unless $cmd;
     die "Extra argv detected - command only please\n" if @what;
     die "No such command ${cmd}\n" unless $self->can( "cmd_${cmd}" );
     $self ->${ \"cmd_${cmd}" };
