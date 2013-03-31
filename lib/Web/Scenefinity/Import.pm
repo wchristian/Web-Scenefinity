@@ -31,7 +31,7 @@ sub run {
 
 sub youtube_ids { map $_[0]->yt_ids_for_account( $_ ), $_[0]->yt_accounts }
 
-sub yt_accounts { qw( Annikras demosceneM0d TMCrole ReclusiveLemming ) }
+sub yt_accounts { qw( Annikras demosceneM0d TMCrole ) } # ReclusiveLemming
 
 sub jget { from_json io( $_[0] )->all }
 
